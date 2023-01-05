@@ -15,6 +15,8 @@ namespace Massive_Plane
                                                   //эконом класс - 1 (левое крыло сзади),
                                                   //эконом класс - 2 (правое крыло сзади),
                                                   //эконом класс - 3 (хвост)
+            int money = 0;
+            int price;
 
             while (true)
             {
@@ -41,71 +43,101 @@ namespace Massive_Plane
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
-                        else Console.WriteLine($"У вас {countTicket} билет(ов/а) на первый класс.");
+                        
+                        else 
+                        {
+                            price = 10000;
+                           int totalPrice = price * countTicket;
+                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на первый класс. " +
+                                $"Cумма покупки {totalPrice}");
+                            money += totalPrice;
+                            Console.WriteLine($"Бюджет кассы - {money}");
                         seats[0] -= countTicket;
+                        } 
                         break;
                     case "БК":
                     case "BC":
                         Console.WriteLine("Введите сколько билетов вы хотите приобрести?");
                         countTicket = Convert.ToInt32(Console.ReadLine());
 
-                        if (seats[1] > 0)
-                        {
-                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на бизнес-класс.");
-                        }
-                        else if (seats[1] < 0)
+                        if (countTicket > seats[1])
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
+
+                        else
+                        {
+                            price = 7500;
+                            int totalPrice = price * countTicket;
+                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на бизнес-класс. " +
+                                $"Cумма покупки {totalPrice}");
+                            money += totalPrice;
+                            Console.WriteLine($"Бюджет кассы - {money}");
                         seats[1] -= countTicket;
+                        }
                         break;
                     case "ЭК1":
                     case "EC1":
                         Console.WriteLine("Введите сколько билетов вы хотите приобрести?");
                         countTicket = Convert.ToInt32(Console.ReadLine());
 
-                        if (seats[2] > 0)
-                        {
-                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом-класс в " +
-                             $"левой части сзади.");
-                        }
-                        else if (seats[2] < 0)
+                        if (countTicket > seats[2])
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
+
+                        else
+                        {
+                            price = 5000;
+                            int totalPrice = price * countTicket;
+                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом класс в левой " +
+                                $"части сзади. " + $"Cумма покупки {totalPrice}");
+                            money += totalPrice;
+                            Console.WriteLine($"Бюджет кассы - {money}");
                         seats[2] -= countTicket;
+                        }
                         break;
                     case "ЭК2":
                     case "EC2":
                         Console.WriteLine("Введите сколько билетов вы хотите приобрести?");
                         countTicket = Convert.ToInt32(Console.ReadLine());
 
-                        if (seats[3] > 0)
-                        {
-                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом-класс в " +
-                            $"правой части сзади.");
-                        }
-                        else if (seats[3] < 0)
+                        if (countTicket > seats[3])
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
-                        seats[2] -= countTicket;
+
+                        else
+                        {
+                            price = 5000;
+                            int totalPrice = price * countTicket;
+                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом класс в левой " +
+                                $"части сзади. " + $"Cумма покупки {totalPrice}");
+                            money += totalPrice;
+                            Console.WriteLine($"Бюджет кассы - {money}");
+                        seats[3] -= countTicket;
+                        }
                         break;
                     case "ЭК3":
                     case "EC3":
                         Console.WriteLine("Введите сколько билетов вы хотите приобрести?");
                         countTicket = Convert.ToInt32(Console.ReadLine());
 
-                        if (seats[4] > 0)
-                        {
-                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом-класс в " +
-                            $"хвосте.");
-                        }
-                        else if (seats[4] < 0)
+                        if (countTicket > seats[4])
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
-                        seats[2] -= countTicket;
+
+                        else
+                        {
+                            price = 5000;
+                            int totalPrice = price * countTicket;
+                            Console.WriteLine($"У вас {countTicket} билет(ов/а) на эконом класс в хвосте" +
+                                $"Cумма покупки {totalPrice}");
+                            money += totalPrice;
+                            Console.WriteLine($"Бюджет кассы - {money}");
+                        seats[4] -= countTicket;
+                        }
                         break;
                     default:
                         Console.WriteLine("Мы не знаем такой команды");
