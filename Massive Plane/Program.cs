@@ -8,6 +8,10 @@ namespace Massive_Plane
 {
     internal class Program
     {
+        //ctrl + r + r - изменить название всех переменных с одним названием в одной зоне видимости
+        //ctrl + k + d - выравнивание
+        //выделение + ctrl + k + s - закомментирование выделенного
+        //выделение + ctrl + k + u - раскомментирование выделенного
         static void Main(string[] args)
         {
             int[] seats = { 10, 30, 15, 15, 20 }; //первый класс (носовая часть),
@@ -23,7 +27,7 @@ namespace Massive_Plane
                 Console.WriteLine("Билеты в какую часть самолёта вы хотите купить? Введите:");
                 Console.WriteLine("1К (1C) - для первого класса, \nБК (BC) - для бизнес класса, \n" +
                     "ЭК1 (EC1) (левое крыло сзади), \nЭК2 (EC2) (правое крыло сзади), " +
-                    "\nЭК3 (EC3) (хвост) для эконом класса");
+                    "\nЭК3 (EC3) (хвост) для эконом класса, выход (exit), чтобы выйти из программы");
 
                 Console.WriteLine($"Всего мест: для первого класса - " +
                     $"{seats[0]}, для бизнес класса -  {seats[1]}, " +
@@ -32,28 +36,32 @@ namespace Massive_Plane
                     $"для эконом-класса в хвосте - {seats[4]}");
 
                 string placeInPlane = Console.ReadLine();
+                if (placeInPlane == "Exit" || placeInPlane == "Выход")
+                {
+                    break;
+                }
 
                 switch (placeInPlane)
                 {
                     case "1К":
-                    case "1С":
+                    case "1C":
                         Console.WriteLine("Введите сколько билетов вы хотите приобрести?");
                         int countTicket = Convert.ToInt32(Console.ReadLine());
                         if (countTicket > seats[0])
                         {
                             Console.WriteLine("К сожалению, билетов нет");
                         }
-                        
-                        else 
+
+                        else
                         {
                             price = 10000;
-                           int totalPrice = price * countTicket;
+                            int totalPrice = price * countTicket;
                             Console.WriteLine($"У вас {countTicket} билет(ов/а) на первый класс. " +
                                 $"Cумма покупки {totalPrice}");
                             money += totalPrice;
                             Console.WriteLine($"Бюджет кассы - {money}");
-                        seats[0] -= countTicket;
-                        } 
+                            seats[0] -= countTicket;
+                        }
                         break;
                     case "БК":
                     case "BC":
@@ -73,7 +81,7 @@ namespace Massive_Plane
                                 $"Cумма покупки {totalPrice}");
                             money += totalPrice;
                             Console.WriteLine($"Бюджет кассы - {money}");
-                        seats[1] -= countTicket;
+                            seats[1] -= countTicket;
                         }
                         break;
                     case "ЭК1":
@@ -94,7 +102,7 @@ namespace Massive_Plane
                                 $"части сзади. " + $"Cумма покупки {totalPrice}");
                             money += totalPrice;
                             Console.WriteLine($"Бюджет кассы - {money}");
-                        seats[2] -= countTicket;
+                            seats[2] -= countTicket;
                         }
                         break;
                     case "ЭК2":
@@ -115,7 +123,7 @@ namespace Massive_Plane
                                 $"части сзади. " + $"Cумма покупки {totalPrice}");
                             money += totalPrice;
                             Console.WriteLine($"Бюджет кассы - {money}");
-                        seats[3] -= countTicket;
+                            seats[3] -= countTicket;
                         }
                         break;
                     case "ЭК3":
@@ -136,14 +144,15 @@ namespace Massive_Plane
                                 $"Cумма покупки {totalPrice}");
                             money += totalPrice;
                             Console.WriteLine($"Бюджет кассы - {money}");
-                        seats[4] -= countTicket;
+                            seats[4] -= countTicket;
                         }
                         break;
                     default:
                         Console.WriteLine("Мы не знаем такой команды");
                         break;
+                        
                 }
-
+                
             }
         }
     }
